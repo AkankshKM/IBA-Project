@@ -25,7 +25,9 @@ export class StoreComponent {
   }
 
   changeCategory(newCategory?: string) {
-    this.selectedCategory = newCategory
+    this.selectedPage = 1;
+    this.selectedCategory = newCategory;
+    this.categories;
   }
 
   changePage(newPage: number) {
