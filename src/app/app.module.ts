@@ -8,4 +8,4 @@ import { StoreModule } from './store/store.module'
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
-// export class AppModule {}
+export class AppModule {}
