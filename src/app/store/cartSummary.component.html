@@ -9,7 +9,9 @@
   
     <button 
       class="btn btn-sm bg-dark text-white" 
-      [disabled]="cart.itemCount === 0">
+      [disabled]="cart.itemCount === 0" 
+      routerLink="/cart"
+      >
       <i class="fas fa-shopping-cart"></i>
     </button>
   </div>
