@@ -7,10 +7,12 @@ import { StoreComponent } from './store/store.component'
 import { CartDetailComponent } from './store/cartDetail.component'
 import { CheckoutComponent } from './store/checkout.component'
 import { StoreFirstGuard } from './storeFirst.guard'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     StoreModule,
     RouterModule.forRoot([
       { path: 'store', component: StoreComponent, canActivate: [StoreFirstGuard]  },
@@ -26,7 +28,7 @@ import { StoreFirstGuard } from './storeFirst.guard'
 ],
 
   providers: [StoreFirstGuard],
-  declarations: [AppComponent],
+  declarations: [ AppComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

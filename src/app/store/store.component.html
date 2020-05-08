@@ -3,6 +3,7 @@
     <div class="col bg-dark text-white">
       <a class="navbar-brand">SPORTS STORE</a>
       <cart-summary> </cart-summary>
+      <app-search-bar (onSelectedOption)="onSelectedOption($event)"></app-search-bar>
     </div>
   </div>
   <div class="row">
@@ -22,6 +23,25 @@
     </div>
 
     <div class="col-9 p-2">
+      <span>{{newSearcResults.length>0 ?"Search Results" : ""}}</span>
+      <div *ngFor="let product of newSearcResults" class="card m-1 p-1 bg-light">
+        <h4>
+          {{ product.name }}
+          <span class="badge badge-pill badge-primary float-right">
+            {{ product.price | currency: 'USD':'symbol':'2.2-2' }}
+          </span>
+        </h4>
+        <div class="card-text bg-white p-1">{{ product.description }}
+          <button 
+            class="btn btn-successs btn-sm float-right"  
+            (click)="addProductToCart(product)">
+            Add to Cart
+          </button>      
+        </div>
+      </div>
+    <br/>
+    <br/>
+    <br/>
       <div *ngFor="let product of products" class="card m-1 p-1 bg-light">
         <h4>
           {{ product.name }}

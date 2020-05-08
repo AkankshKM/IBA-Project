@@ -5,6 +5,9 @@ import { RestDataSource } from './rest.datasource'
 
 @Injectable()
 export class ProductRepository {
+  searchOption = []
+  selectedCat=""
+  checkthis = ""
   private products: Product[] = []
   private categories: string[] = []
 
@@ -25,11 +28,24 @@ export class ProductRepository {
   getProduct(id: number): Product {
     return this.products.find((p) => p.id == id)
   }
-
+  checkAgain() {
+    let check = this.searchOption
+    if (check.length > 0) {
+      check = check.filter((p) => p.category)
+    }
+    return check
+  }
+  getSearchOptions() {
+    return this.checkAgain()
+  }
   getCategories(): string[] {
     return this.categories
   }
-  
+  categorychosen() {
+    let categorychosen =this.selectedCat?this.selectedCat: null
+    return categorychosen
+  }
+
   saveProduct(product: Product) {
     if (product.id == null || product.id == 0) {
       this.dataSource.saveProduct(product).subscribe((p) => this.products.push(p))

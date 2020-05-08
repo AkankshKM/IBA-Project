@@ -13,6 +13,7 @@ export class StoreComponent {
   public productsPerPage = 4
   public selectedPage = 1
 
+  post: Product[]
   constructor(private repository: ProductRepository, private cart: Cart, private router: Router) {}
 
   get products(): Product[] {
@@ -21,7 +22,11 @@ export class StoreComponent {
       .getProducts(this.selectedCategory)
       .slice(pageIndex, pageIndex + this.productsPerPage)
   }
-
+  get newSearcResults(): Product[] {
+    let searchOptionnew=this.repository.getSearchOptions()
+    return searchOptionnew
+    
+  }
   get categories(): string[] {
     return this.repository.getCategories()
   }
@@ -30,6 +35,7 @@ export class StoreComponent {
     this.selectedPage = 1;
     this.selectedCategory = newCategory;
     this.categories;
+    this.repository.selectedCat=newCategory;
   }
 
   changePage(newPage: number) {
@@ -42,8 +48,9 @@ export class StoreComponent {
   }
 
   get pageNumbers(): number[] {
-    const products = this.repository.getProducts(this.selectedCategory)
-    const pages = products.length / this.productsPerPage
+
+    const products3 = this.repository.getProducts(this.selectedCategory)
+    const pages = products3.length / this.productsPerPage
 
     // the next whole number, 0.5 => 1, 3.2 => 4
     const pageCount = Math.ceil(pages)
@@ -60,5 +67,7 @@ export class StoreComponent {
     this.cart.addLine(product)
     this.router.navigateByUrl('/cart')
   }
-  
+  onSelectedOption(e) {
+    console.log("Secret",e)
+  }
 }

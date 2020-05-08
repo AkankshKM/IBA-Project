@@ -8,4 +8,5 @@ import { Cart } from '../model/cart.model'
 export class CartSummaryComponent {
   // the cart is injected by Angular
   constructor(public cart: Cart) {}
+
 }

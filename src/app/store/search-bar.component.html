@@ -1,0 +1,22 @@
+<form class="example-form" >
+    <mat-form-field class="example-full-width" style="background-color: white; height:10%;
+    width: 30%;border-bottom: 5px solid #343a40;">
+      <mat-chip-list style="color:black;" #chipList>
+        <input   #autocompleteInput type="text" placeholder="Search Products" 
+            matInput [formControl]="myControl" [matAutocomplete]="auto" [matChipInputFor]="chipList">
+  
+            <i class="fas fa-search fa-lg" style="margin-right: 15px;"></i>
+        <mat-autocomplete   #auto="matAutocomplete">
+          <mat-option style="color:black;" *ngFor="let option of autoCompleteList" [value]="option"
+                    (onSelectionChange)="filterPostList($event)"
+                    >
+                    <span style="color:blue;">{{option.name}}</span>
+                     <span>  {{option.description}}</span>
+                   
+          </mat-option>
+        </mat-autocomplete>
+      </mat-chip-list>
+    
+    </mat-form-field>
+    
+    </form>
